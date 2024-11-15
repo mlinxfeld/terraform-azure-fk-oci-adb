@@ -1,5 +1,9 @@
 variable "subscription_id" {}
 
+variable "deploy_autonomous_db" {
+  default = false
+}
+
 variable "azure_VNet_CIDR" {
   default = "10.0.0.0/16"
 }

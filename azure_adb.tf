@@ -1,4 +1,5 @@
 resource "azapi_resource" "autonomous_db" {
+  count                     = var.deploy_autonomous_db ? 1 : 0
   type                      = "Oracle.Database/autonomousDatabases@2023-09-01"
   parent_id                 = azurerm_resource_group.FoggyKitchen_Resource_Group.id
   name                      = "fkadb"
@@ -11,7 +12,7 @@ resource "azapi_resource" "autonomous_db" {
   }
  
   body = {
-    "location" : "eastus",
+    "location" : "germanywestcentral",
     "properties" : {
       "displayName" : "fkadb",
       "computeCount" : 1,
@@ -31,7 +32,7 @@ resource "azapi_resource" "autonomous_db" {
       "isAutoScalingForStorageEnabled" : false,
  
       "vnetId" : azurerm_virtual_network.FoggyKitchen_VNet.id
-      "subnetId" : azurerm_subnet.FoggyKitchen_Private_Subnet.id
+      "subnetId" : azurerm_subnet.FoggyKitchen_Private_Subnet[0].id
     }
   }
   response_export_values = ["id", "properties.ocid", "properties"]
