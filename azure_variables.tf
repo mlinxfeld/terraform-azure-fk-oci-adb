@@ -1,3 +1,5 @@
+variable "subscription_id" {}
+
 variable "azure_VNet_CIDR" {
   default = "10.0.0.0/16"
 }

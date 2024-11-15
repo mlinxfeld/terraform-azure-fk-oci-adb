@@ -1,6 +1,6 @@
 resource "azapi_resource" "autonomous_db" {
   type                      = "Oracle.Database/autonomousDatabases@2023-09-01"
-  parent_id                 = azurerm_resource_group.FoggyKitchen_Resource_Group.name
+  parent_id                 = azurerm_resource_group.FoggyKitchen_Resource_Group.id
   name                      = "fkadb"
   schema_validation_enabled = false
  
